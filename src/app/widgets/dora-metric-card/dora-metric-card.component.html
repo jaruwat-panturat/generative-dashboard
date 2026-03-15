@@ -1,0 +1,33 @@
+<mat-card class="metric-card">
+  <mat-card-content>
+    <div class="card-header">
+      <span class="metric-label">{{ title }}</span>
+      <span
+        class="level-badge"
+        [style.color]="getLevelColor(metric.dora_level)"
+        [matTooltip]="'DORA level: ' + levelLabel[metric.dora_level]">
+        {{ levelLabel[metric.dora_level] }}
+      </span>
+    </div>
+
+    <div class="team-name">{{ dataset.team.name }}</div>
+
+    <div class="value-row">
+      <span class="value">{{ metric.value }}</span>
+      <span class="unit">{{ metric.unit }}</span>
+      <span class="trend" [class]="trendClass" [matTooltip]="'8-week trend'">
+        {{ trendIcon }}
+      </span>
+    </div>
+
+    <svg class="sparkline" viewBox="0 0 160 40" preserveAspectRatio="none">
+      <path
+        [attr.d]="sparklinePath"
+        fill="none"
+        [attr.stroke]="getLevelColor(metric.dora_level)"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </mat-card-content>
+</mat-card>

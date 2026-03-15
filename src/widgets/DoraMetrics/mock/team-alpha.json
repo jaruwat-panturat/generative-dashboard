@@ -1,0 +1,79 @@
+{
+  "team": {
+    "id": "team-alpha",
+    "name": "Team Alpha",
+    "description": "Frontend Platform"
+  },
+  "period": {
+    "from": "2026-01-15",
+    "to": "2026-03-15",
+    "label": "Last 60 days"
+  },
+  "dora_level": "elite",
+  "metrics": {
+    "deployment_frequency": {
+      "label": "Deployment Frequency",
+      "value": 4.2,
+      "unit": "deploys/day",
+      "dora_level": "elite",
+      "trend": [
+        { "week": "2026-01-19", "value": 3.1 },
+        { "week": "2026-01-26", "value": 3.4 },
+        { "week": "2026-02-02", "value": 3.8 },
+        { "week": "2026-02-09", "value": 4.0 },
+        { "week": "2026-02-16", "value": 3.9 },
+        { "week": "2026-02-23", "value": 4.1 },
+        { "week": "2026-03-02", "value": 4.5 },
+        { "week": "2026-03-09", "value": 4.2 }
+      ]
+    },
+    "lead_time_for_changes": {
+      "label": "Lead Time for Changes",
+      "value": 0.8,
+      "unit": "hours",
+      "dora_level": "elite",
+      "trend": [
+        { "week": "2026-01-19", "value": 1.4 },
+        { "week": "2026-01-26", "value": 1.2 },
+        { "week": "2026-02-02", "value": 1.1 },
+        { "week": "2026-02-09", "value": 1.0 },
+        { "week": "2026-02-16", "value": 0.9 },
+        { "week": "2026-02-23", "value": 0.9 },
+        { "week": "2026-03-02", "value": 0.8 },
+        { "week": "2026-03-09", "value": 0.8 }
+      ]
+    },
+    "change_failure_rate": {
+      "label": "Change Failure Rate",
+      "value": 2.1,
+      "unit": "%",
+      "dora_level": "elite",
+      "trend": [
+        { "week": "2026-01-19", "value": 3.5 },
+        { "week": "2026-01-26", "value": 3.1 },
+        { "week": "2026-02-02", "value": 2.8 },
+        { "week": "2026-02-09", "value": 2.5 },
+        { "week": "2026-02-16", "value": 2.4 },
+        { "week": "2026-02-23", "value": 2.2 },
+        { "week": "2026-03-02", "value": 2.3 },
+        { "week": "2026-03-09", "value": 2.1 }
+      ]
+    },
+    "time_to_restore": {
+      "label": "Time to Restore Service",
+      "value": 0.5,
+      "unit": "hours",
+      "dora_level": "elite",
+      "trend": [
+        { "week": "2026-01-19", "value": 1.2 },
+        { "week": "2026-01-26", "value": 0.9 },
+        { "week": "2026-02-02", "value": 0.8 },
+        { "week": "2026-02-09", "value": 0.7 },
+        { "week": "2026-02-16", "value": 0.6 },
+        { "week": "2026-02-23", "value": 0.6 },
+        { "week": "2026-03-02", "value": 0.5 },
+        { "week": "2026-03-09", "value": 0.5 }
+      ]
+    }
+  }
+}

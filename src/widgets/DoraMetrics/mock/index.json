@@ -1,0 +1,7 @@
+{
+  "datasets": [
+    { "id": "team-alpha", "file": "team-alpha.json" },
+    { "id": "team-beta",  "file": "team-beta.json"  },
+    { "id": "team-gamma", "file": "team-gamma.json" }
+  ]
+}

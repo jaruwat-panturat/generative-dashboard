@@ -1,0 +1,28 @@
+<mat-toolbar class="toolbar">
+  <span class="toolbar-title">Generative Dashboard</span>
+  <span class="spacer"></span>
+  <div class="team-filters">
+    <span class="filter-label">Teams:</span>
+    @for (team of teams; track team.dataset.team.id) {
+      <mat-checkbox [(ngModel)]="team.selected" color="primary">
+        {{ team.dataset.team.name }}
+      </mat-checkbox>
+    }
+  </div>
+</mat-toolbar>
+
+<main class="dashboard-content">
+  @if (selectedDatasets.length === 0) {
+    <div class="empty-state">
+      <p>Select at least one team to view metrics.</p>
+    </div>
+  } @else {
+    <div class="metrics-grid">
+      @for (dataset of selectedDatasets; track dataset.team.id) {
+        @for (key of metricKeys; track key) {
+          <app-dora-metric-card [metricKey]="key" [dataset]="dataset" />
+        }
+      }
+    </div>
+  }
+</main>

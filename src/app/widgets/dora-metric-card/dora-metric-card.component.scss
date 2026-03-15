@@ -1,0 +1,67 @@
+.metric-card {
+  height: 100%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.level-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.team-name {
+  font-size: 13px;
+  color: var(--mat-sys-on-surface-variant);
+  margin-bottom: 8px;
+}
+
+.value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.value {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--mat-sys-on-surface);
+}
+
+.unit {
+  font-size: 13px;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.trend {
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 4px;
+
+  &.trend-up   { color: #00c853; }
+  &.trend-down { color: #ef5350; }
+  &.trend-flat { color: var(--mat-sys-on-surface-variant); }
+}
+
+.sparkline {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 12px;
+  opacity: 0.75;
+}
