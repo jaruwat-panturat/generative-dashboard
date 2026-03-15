@@ -1,28 +1,73 @@
 <mat-toolbar class="toolbar">
   <span class="toolbar-title">Generative Dashboard</span>
   <span class="spacer"></span>
-  <div class="team-filters">
-    <span class="filter-label">Teams:</span>
-    @for (team of teams; track team.dataset.team.id) {
-      <mat-checkbox [(ngModel)]="team.selected" color="primary">
-        {{ team.dataset.team.name }}
-      </mat-checkbox>
-    }
-  </div>
-</mat-toolbar>
-
-<main class="dashboard-content">
-  @if (selectedDatasets.length === 0) {
-    <div class="empty-state">
-      <p>Select at least one team to view metrics.</p>
-    </div>
-  } @else {
-    <div class="metrics-grid">
-      @for (dataset of selectedDatasets; track dataset.team.id) {
-        @for (key of metricKeys; track key) {
-          <app-dora-metric-card [metricKey]="key" [dataset]="dataset" />
-        }
+  @if (!isAILayout) {
+    <div class="team-filters">
+      <span class="filter-label">Teams:</span>
+      @for (team of teams; track team.dataset.team.id) {
+        <mat-checkbox [(ngModel)]="team.selected" color="primary">
+          {{ team.dataset.team.name }}
+        </mat-checkbox>
       }
     </div>
+  } @else {
+    <button mat-stroked-button (click)="resetToStatic()">← Static view</button>
+  }
+</mat-toolbar>
+
+<div class="prompt-bar">
+  <mat-form-field class="prompt-field" appearance="outline" subscriptSizing="dynamic">
+    <input
+      matInput
+      [(ngModel)]="promptInput"
+      placeholder="e.g. Show all DORA metrics for Team Alpha"
+      [disabled]="isBusy"
+      (keydown.enter)="onPromptSubmit()"
+    />
+  </mat-form-field>
+  <button mat-flat-button color="primary" [disabled]="isBusy" (click)="onPromptSubmit()">
+    @if (aiStatus === 'loading') { Loading model… }
+    @else if (aiStatus === 'generating') { Generating… }
+    @else { Generate }
+  </button>
+</div>
+
+@if (aiStatus === 'loading') {
+  <div class="loading-bar-wrap">
+    <mat-progress-bar mode="determinate" [value]="loadingProgress" />
+    <span class="loading-label">
+      {{ loadingFile || 'Downloading model…' }} — {{ loadingProgress }}%
+    </span>
+  </div>
+}
+
+@if (errorMessage) {
+  <div class="error-banner">{{ errorMessage }}</div>
+}
+
+<main class="dashboard-content">
+  @if (isAILayout) {
+    <div class="metrics-grid">
+      @for (widget of resolvedWidgets; track widget.id) {
+        <ng-container
+          [ngComponentOutlet]="widget.component"
+          [ngComponentOutletInputs]="widget.inputs"
+        />
+      }
+    </div>
+  } @else {
+    @if (selectedDatasets.length === 0) {
+      <div class="empty-state">
+        <p>Select at least one team to view metrics.</p>
+      </div>
+    } @else {
+      <div class="metrics-grid">
+        @for (dataset of selectedDatasets; track dataset.team.id) {
+          @for (key of metricKeys; track key) {
+            <app-dora-metric-card [metricKey]="key" [dataset]="dataset" />
+          }
+        }
+      </div>
+    }
   }
 </main>
